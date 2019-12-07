@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("")
+//@RequestMapping("hello")
 public class HelloController {
 
     @GetMapping("/he")
     public String index(){
-        return "index";
+        return "hello";
     }
 }
