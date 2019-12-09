@@ -1,4 +1,4 @@
-package life.maju.community.controller;
+package life.maju.community;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
