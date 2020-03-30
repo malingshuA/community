@@ -31,6 +31,7 @@ public class GithubProvider {
             return string;
         } catch (IOException e) {
             e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }

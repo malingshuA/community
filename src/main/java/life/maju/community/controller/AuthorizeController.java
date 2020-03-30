@@ -31,21 +31,23 @@ public class AuthorizeController {
     @Value("${github.redirect.uri}")
     private String redirectUri;
 
+//    @Autowired
+//    private UserMapper userMapper;
+
     @Autowired
     private UserMapper userMapper;
 
-
-    @GetMapping("/callback")
+    @GetMapping(value = "/callback")
     public String Callback(@RequestParam(name="code") String code,
                            @RequestParam(name="state") String state,
                            HttpServletRequest request,
                            HttpServletRequest response){
 
         AccesstokenDTO accesstokenDTO = new AccesstokenDTO();
-        /*accesstokenDTO.setClient_id("b2d945f47a58fefdb3ae");
-        accesstokenDTO.setClient_secret("324e2d7a189dcc868d5fc2ae91d9aa9c992ff2df");
-        accesstokenDTO.setCode(code);
-        accesstokenDTO.setRedirect_uri("http://localhost:8800/callback");*/
+//        accesstokenDTO.setClient_id("b2d945f47a58fefdb3ae");
+//        accesstokenDTO.setClient_secret("324e2d7a189dcc868d5fc2ae91d9aa9c992ff2df");
+//        accesstokenDTO.setCode(code);
+//        accesstokenDTO.setRedirect_uri("http://localhost:8800/callback");
 
         accesstokenDTO.setClient_id(clinetId);
         accesstokenDTO.setClient_secret(clientSecret);
@@ -66,8 +68,7 @@ public class AuthorizeController {
             user.setGmtModified(user.getGmtCreate());
             userMapper.insert(user);
             //HttpServletResponse response = null;
-            response.addCookie(new Cookie("token",token));
-
+ //           response.addCookie(new Cookie("token",token));
 
             request.getSession().setAttribute("user",githubUser);
             return "redirect:/he";
