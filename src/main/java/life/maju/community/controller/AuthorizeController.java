@@ -24,11 +24,11 @@ public class AuthorizeController {
     //把写好的实例加载到当前写好的上下文
     private GithubProvider githubProvider;
 
-    @Value("${github.client.id}")
+    @Value("d33cbfa860c959295e81d0ca404fa47972adf4a452b47de3138f9a934343b154")
     private String clinetId;
-    @Value("${github.client.secret}")
+    @Value("55d648c6d303152b0e82196e37771d96e8b2843c93c92af9dbe1302a8506f916")
     private  String clientSecret;
-    @Value("${github.redirect.uri}")
+    @Value("http://localhost:8800/callback")
     private String redirectUri;
 
 //    @Autowired
@@ -44,15 +44,15 @@ public class AuthorizeController {
                            HttpServletRequest response){
 
         AccesstokenDTO accesstokenDTO = new AccesstokenDTO();
-//        accesstokenDTO.setClient_id("b2d945f47a58fefdb3ae");
-//        accesstokenDTO.setClient_secret("324e2d7a189dcc868d5fc2ae91d9aa9c992ff2df");
-//        accesstokenDTO.setCode(code);
-//        accesstokenDTO.setRedirect_uri("http://localhost:8800/callback");
-
-        accesstokenDTO.setClient_id(clinetId);
-        accesstokenDTO.setClient_secret(clientSecret);
+        accesstokenDTO.setClient_id("d33cbfa860c959295e81d0ca404fa47972adf4a452b47de3138f9a934343b154");
+        accesstokenDTO.setClient_secret("55d648c6d303152b0e82196e37771d96e8b2843c93c92af9dbe1302a8506f916");
         accesstokenDTO.setCode(code);
-        accesstokenDTO.setRedirect_uri(redirectUri);
+        accesstokenDTO.setRedirect_uri("http://localhost:8800/callback");
+
+//        accesstokenDTO.setClient_id(clinetId);
+//        accesstokenDTO.setClient_secret(clientSecret);
+//        accesstokenDTO.setCode(code);
+//        accesstokenDTO.setRedirect_uri(redirectUri);
 
         accesstokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accesstokenDTO);
@@ -71,11 +71,11 @@ public class AuthorizeController {
  //           response.addCookie(new Cookie("token",token));
 
             request.getSession().setAttribute("user",githubUser);
-            return "redirect:/he";
+            return "redirect:/index";
             //登录成功，写cookie和session
         }else{
             //登录失败，重新登录
-            return "redirect:/he";
+            return "redirect:/index";
         }
     }
 }

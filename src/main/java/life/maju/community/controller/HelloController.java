@@ -11,12 +11,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 //@RequestMapping("")
 public class HelloController {
 
-    @RequestMapping("/hello")
-    //@RequestParam:情趣的参数
-    //Model:用于接受浏览器传过来的信息;浏览器传来的值放到modeld里面
-    //
-    public String index(@RequestParam(name = "name") String name,Model modeld){
-        modeld.addAttribute("name",name);
+    @RequestMapping("/index")
+    public String index(){
         return "index";
     }
+
+//    @RequestMapping("/hello")
+//    //@RequestParam:情趣的参数
+//    //Model:用于接受浏览器传过来的信息;浏览器传来的值放到modeld里面
+//    //
+//    public String index(@RequestParam(name = "name") String name,Model modeld){
+//        modeld.addAttribute("name",name);
+//        return "hello";
+//    }
 }
